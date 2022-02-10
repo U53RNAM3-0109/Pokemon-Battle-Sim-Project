@@ -1,0 +1,77 @@
+damage:
+  damage = 2 * lvl
+  print(damage)
+  damage = damage / 5
+  print(damage)
+  damage = damage + 2
+  print(damage)
+  damage = damage * power
+  print(damage)
+  damage = damage * round((attack / defense))
+  print(damage)
+  damage = damage / 50
+  print(damage)
+  damage = damage + 2
+  print(damage)
+  damage = damage * crit
+  print(damage)
+  damage = damage * roll
+  print(damage)
+  damage = damage * stab
+  print(damage)
+  damage = damage * effective
+  print(damage)
+  damage = damage * burn 
+  damage = round(damage)
+  print(damage)
+
+2D sprites:
+def game_layout(team1,team2):
+    #saves file names
+    teamfile = []
+    #create list with file names for images
+    def file (team,teamfile,side):
+        list = team
+        for i in range(len(list)):
+            photo ='sprites/' + str(side) + str(team[i]) + '.png'
+            teamfile.append(photo)
+            
+    file(team1,teamfile,('front_'))
+    file(team2,teamfile,('back_'))
+
+    print (teamfile)
+    #opens images
+    image1 = pg.image.load(teamfile[0])
+    image2 = pg.image.load(teamfile[1])
+    image3 = pg.image.load(teamfile[2])
+    image4 = pg.image.load(teamfile[3])
+    image5 = pg.image.load(teamfile[4])
+    image6 = pg.image.load(teamfile[5])
+
+
+
+    #creates sprites
+    class Pokemon_s(pg.sprite.Sprite):
+        def __init__(self,pos, image):
+            super().__init__()
+            self.image = image
+            self.rect = self.image.get_rect()
+            self.rect = pos
+
+    pokemon1 = Pokemon_s((200,200), image1)
+    pokemon2 = Pokemon_s((400,230),image2)
+    pokemon3 = Pokemon_s((600,260),image3)
+    pokemon4 = Pokemon_s((50,300),image4)
+    pokemon5 = Pokemon_s((190,340),image5)
+    pokemon6 = Pokemon_s((420,360),image6)
+
+
+    #displays sprites
+    screen.blit(pokemon1.image, pokemon1.rect)
+    screen.blit(pokemon2.image, pokemon2.rect)
+    screen.blit(pokemon3.image, pokemon3.rect)
+    screen.blit(pokemon4.image, pokemon4.rect)
+    screen.blit(pokemon5.image, pokemon5.rect)
+    screen.blit(pokemon6.image, pokemon6.rect)
+
+    pg.display.update()
