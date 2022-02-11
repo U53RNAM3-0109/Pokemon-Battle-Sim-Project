@@ -26,8 +26,13 @@ def teamGenerate():
 
     team1 = [slot1, slot2, slot3]
     team2 = [grass[0], water[0], fire[0]]
-    return team1,team2
 
+
+    rand.shuffle(team1)
+    rand.shuffle(team2)
+    
+    return team1,team2
+    
 
 team1, team2 = teamGenerate()
 pygameImage = []
@@ -64,7 +69,6 @@ def game(team1, team2):
     pg.display.flip()
 
     def match1_layout(teamfile1, teamfile2):
-        print(teamfile1)
         imageObject1 = Image.open(teamfile1[0])
         imageObject2 = Image.open(teamfile2[0])
         run = True
