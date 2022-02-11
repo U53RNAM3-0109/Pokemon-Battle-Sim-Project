@@ -17,7 +17,7 @@ pg.display.flip()
 
 
 def teamGenerate():
-    grass = ['snivy', 'rowlet']
+    grass = ['snivy', 'turtwig']
     water = ['oshawott', 'totodile']
     fire = ['tepig', 'cyndaquil']
     slot1 = grass.pop(rand.randint(0, 1))
@@ -26,31 +26,28 @@ def teamGenerate():
 
     team1 = [slot1, slot2, slot3]
     team2 = [grass[0], water[0], fire[0]]
+    return team1,team2
 
-    #game(team1, team2)
 
-
-#test
-team1 = ['snivy', 'rowlet', 'oshawott']
-team2 = ['totodile', 'tenpig', 'cyndaquil']
+team1, team2 = teamGenerate()
 pygameImage = []
 
 
 def game(team1, team2):
     #saves file names
-    teamfile1 = ['characters/front_snivy.gif']
-    teamfile2 = ['characters/back_totodile.gif']
+    teamfile1 = []
+    teamfile2 = []
 
     #create list with file names for images
     def file(team, teamfile, side):
         list = team
         for i in range(len(list)):
-            photo = 'characters/', str(side) + str(team[i]) + '.gif'
+            photo = f"characters/{side}_{team[i]}.gif"
             teamfile.append(photo)
         return teamfile
 
-    file(team1, teamfile1, ('front_'))
-    file(team2, teamfile2, ('back_'))
+    teamfile1 = file(team1, teamfile1, ('front'))
+    teamfile2 = file(team2, teamfile2, ('back'))
 
     def pilImageToSurface(pilImage):
         mode, size, data = pilImage.mode, pilImage.size, pilImage.tobytes()
@@ -67,58 +64,62 @@ def game(team1, team2):
     pg.display.flip()
 
     def match1_layout(teamfile1, teamfile2):
+        print(teamfile1)
         imageObject1 = Image.open(teamfile1[0])
         imageObject2 = Image.open(teamfile2[0])
         run = True
         frame1 = imageObject1.n_frames
         frame2 = imageObject2.n_frames
-        if frame1 < frame2:
-            while run == True:
-                for frame in range(0, imageObject1.n_frames):
-                    clock.tick(10)
-                    screen.fill(0)
-                    background_image = pg.image.load("bg.png").convert()
-                    screen.blit(background_image, [0, 0])
-                    imageObject1.seek(frame)
-                    imageObject2.seek(frame)
-                    pygameImage1 = pilImageToSurface(
-                        imageObject1.convert('RGBA'))
-                    pygameImage2 = pilImageToSurface(
-                        imageObject2.convert('RGBA'))
-                    screen.blit(pygameImage1, (400, 230))
-                    screen.blit(pygameImage2, (190, 340))
-                    pg.display.update()
-        else:
-            while run == True:
-                for frame in range(0, imageObject2.n_frames):
-                    clock.tick(10)
-                    screen.fill(0)
-                    background_image = pg.image.load("bg.png").convert()
-                    screen.blit(background_image, [0, 0])
-                    imageObject1.seek(frame)
-                    imageObject2.seek(frame)
-                    pygameImage1 = pilImageToSurface(
-                        imageObject1.convert('RGBA'))
-                    pygameImage2 = pilImageToSurface(
-                        imageObject2.convert('RGBA'))
-                    screen.blit(pygameImage1, (400, 230))
-                    screen.blit(pygameImage2, (190, 340))
-                    pg.display.update()
+        frame_num1 = 0
+        frame_num2 = 0
+        while run == True:
+            clock.tick(10)
+            screen.fill(0)
+            background_image = pg.image.load("bg.png").convert()
+            screen.blit(background_image, [0, 0])
+            imageObject1.seek(frame_num1)
+            imageObject2.seek(frame_num2)
+            pygameImage1 = pilImageToSurface(
+                imageObject1.convert('RGBA'))
+            pygameImage2 = pilImageToSurface(
+                imageObject2.convert('RGBA'))
+            screen.blit(pygameImage1, (400, 230))
+            screen.blit(pygameImage2, (100, 300))
+            pg.display.update()
+            frame_num1 = frame_num1 + 1
+            frame_num2 = frame_num2 + 1
+            if frame_num1 >= frame1:
+                frame_num1 = 0
+            if frame_num2 >= frame2:
+                frame_num2 = 0
+
 
     match1_layout(teamfile1, teamfile2)
 
-
-#teamGenerate()
+teamGenerate()
 game(team1, team2)
 
-
 def turnSystem():
-
+    #check who is first
+    #enter turn for char.
+    #if player, present options
+    #perform actions based on choice
+    #else, choose random move
+    #perform actions based on move
+    #check for burn damage
+    #perform next turn.
     pass
 
+def speedCheck(poke1,poke2):
+    #Returns pokemon with greatest speed
+    if poke1['Speed'] > poke2['Speed']:
+        return True
+    elif poke1['Speed'] < poke2['Speed']:
+        return False
+    else:
+        return rand.choice((True,False))
 
-def speedCheck():
-    pass
+
 
 
 def stat_modify():
@@ -154,7 +155,6 @@ def load_pokemon_dict():
 
     return dictionary
 
-
 def load_moves_dict():
     with open('moves.csv', 'r') as file:
         keys = list(file.readline().strip().split(','))
@@ -170,8 +170,7 @@ def load_moves_dict():
     return dictionary
 
 
-pokemon = load_pokemon_dict()
-moves = load_moves_dict()
+
 
 
 def give_poke_moves(pokemon, moves):
@@ -183,5 +182,13 @@ def give_poke_moves(pokemon, moves):
     return pokemon
 
 
+#Create dictionaries
+pokemon = load_pokemon_dict()
+moves = load_moves_dict()
 pokemon = give_poke_moves(pokemon, moves)
-#from main import load_moves_dict,give_poke_moves,load_moves_dict
+
+
+#NOTE
+# Add a second set of stats to pokemon dictionary,
+# to track current stats and statuses
+# (after any effects are applied)

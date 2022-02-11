@@ -4,7 +4,7 @@ Leer,Status,Normal,0,100,0,0,Def,-1
 Growl,Status,Normal,0,100,0,0,Atk,-1
 Vine Whip,Physical,Grass,45,100,0,0,,
 Leafage,Physical,Grass,40,100,0,0,,
-Astonish,Physical,Ghost,30,100,0,30,,
+Withdraw,Status,Water,0,1000,0,30,Def,+1
 Smokescreen,Status,Normal,0,100,0,0,Acc,-1
 Ember,Special,Fire,40,100,10,0,,
 Tail Whip,Status,Normal,0,100,0,0,Def,-1

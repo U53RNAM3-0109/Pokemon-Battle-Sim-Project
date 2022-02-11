@@ -1,7 +1,7 @@
 #Name,ImgFront,ImgBack,Lv,Hp,Atk,Def,SAtk,SDef,Speed,Type,Moveset
-Snivy,front_snivy.png,back_snivy.png,7,23,11,12,11,12,13,Grass,Tackle,Leer,Vine Whip
-Rowlet,front_rowlet.png,back_rowlett.png,7,26,12,12,12,12,10,Grass,Tackle,Growl,Leafage,Astonish
-Tepig,front_tepig.png,back_tepig.png,7,26,13,11,11,11,11,Fire,Tackle,Tail Whip,Ember
-Cyndaquil,front_cyndaquil.png,back_cyndaquil.png,7,22,12,11,13,12,14,Fire,Tackle,Leer,Smokescreen,Ember
-Oshawott,front_oshawott.png,back_oshawott.png,7,24,12,11,13,11,11,Water,Tackle,Tail Whip,Water Gun,Fury Cutter
-Totodile,front_totodile.png,back_totodile.png,7,24,14,13,11,11,11,Water,Scratch,Leer,Water Gun
+Snivy,front_snivy.gif,back_snivy.gif,7,23,11,12,11,12,13,Grass,Tackle,Leer,Vine Whip
+Turtwig,front_turtwig.gif,back_turtwig.gif,7,24,14,11,12,12,9,Grass,Tackle,Withdraw,Leafage,
+Tepig,front_tepig.gif,back_tepig.gif,7,26,13,11,11,11,11,Fire,Tackle,Tail Whip,Ember
+Cyndaquil,front_cyndaquil.gif,back_cyndaquil.gif,7,22,12,11,13,12,14,Fire,Tackle,Leer,Smokescreen,Ember
+Oshawott,front_oshawott.gif,back_oshawott.gif,7,24,12,11,13,11,11,Water,Tackle,Tail Whip,Water Gun,Fury Cutter
+Totodile,front_totodile.gif,back_totodile.gif,7,24,14,13,11,11,11,Water,Scratch,Leer,Water Gun
