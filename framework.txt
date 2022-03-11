@@ -75,3 +75,15 @@ def game_layout(team1,team2):
     screen.blit(pokemon6.image, pokemon6.rect)
 
     pg.display.update()
+
+
+    window_width = 800
+window_height = 480
+size = (window_width, window_height)
+screen = pg.display.set_mode(size)
+
+# Set title to the window
+pg.display.set_caption("pokemon")
+background_image = pg.image.load("bg.png").convert()
+screen.blit(background_image, [0, 0])
+pg.display.flip()
